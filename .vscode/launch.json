@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-RestapiSpringBootApplication<restapi-spring-boot>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.poll.restapi_spring_boot.RestapiSpringBootApplication",
+      "projectName": "restapi-spring-boot",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "DATASOURCE_URL": "jdbc:mysql://localhost:3306/voting_app",
+        "DATASOURCE_USERNAME": "root",
+        "DATASOURCE_PASSWORD": "password"
+      }
+    }
+  ]
+}
