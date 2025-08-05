@@ -9,5 +9,4 @@ import { PollComponent } from './poll/poll.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Mr.saddam';
 }
