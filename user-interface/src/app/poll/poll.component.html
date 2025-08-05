@@ -1,0 +1,75 @@
+<div class="container m-5">
+
+    <!--adding some fields that lets us create new polls-->
+    <h2 class="text-center">Create a New Poll</h2>
+
+    <form (ngSubmit)="createPoll()" #pollForm="ngForm">
+    
+    <!-- Poll Question -->
+    <div class="mb-3">
+        <label for="question" class="form-label">Poll Question</label>
+        <input
+        type="text"
+        id="question"
+        class="form-control"
+        [(ngModel)]="newPoll.question"
+        name="question"
+        required
+        />
+    </div>
+
+    <!-- Poll Options -->
+    <div class="mb-3">
+        <div *ngFor="let option of newPoll.options; let i = index">
+        <label for="option{{ i }}" class="form-label mt-2">Option {{ i + 1 }}</label>
+        <div class="d-flex gap-2 align-items-center">
+            <input
+                type="text"
+                id="option{{ i }}"
+                class="form-control"
+                [(ngModel)]="option.optionText"
+                [name]="'option' + i"
+                required
+            />
+            <button type="button" *ngIf="newPoll.options.length > 2"
+                class="btn btn-danger" (click)="removeOption(i)" >Remove</button>
+        </div>
+        </div>
+    </div>
+
+    <!--add option button-->
+    <button
+        type="button"
+        class="btn btn-secondary mx-4"
+        (click)="addOption()">
+        Add Option
+    </button>
+    <!-- Submit Button (IMPORTANT: outside of ngFor) -->
+    <button type="submit" class="btn btn-success">
+        Create Poll
+    </button>
+    </form>
+
+
+
+    <h2 class="mt-4 text-center">Available Polls</h2>
+    <div class="polls-list">
+        <div *ngFor="let poll of polls" class="border rounded p-3 mb-3">
+            <div class="d-flex  justify-content-between">
+                <h3>{{ poll.question }}</h3>
+                <button type="button"
+                    class="btn btn-danger" (click)="delete(poll.id)">Delete</button>
+        </div>
+            <div class="options-list">
+                <div *ngFor="let option of poll.options; let i = index">
+                    <button (click)="vote(poll.id, i)" class="btn btn-outline-primary me-2 mt-2">
+                        {{i + 1}}.
+                        {{option.optionText}} ( {{option.voteCount}} votes)
+                    </button>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+</div>
