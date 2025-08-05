@@ -49,6 +49,7 @@ export class PollComponent implements OnInit{
     });
   }
 
+
   createPoll() {
     //check if question is empty
     if (!this.newPoll.question.trim()) {
@@ -134,4 +135,8 @@ export class PollComponent implements OnInit{
       }
     });
   }
+
+ toggleTheme(): void {
+  document.body.classList.toggle('dark-theme');
+}
 }
